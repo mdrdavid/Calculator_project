@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="container">
+        <div class="display">0</div>
+        <div class="buttons">
+            <button class="clear">C</button>
+            <div></div>
+            <div></div>
+            <div></div>
+            <button class="number">7</button>
+            <button class="number">8</button>
+            <button class="number">9</button>
+            <button class="operator">/</button>
+            <button class="number">4</button>
+            <button class="number">5</button>
+            <button class="number">6</button>
+            <button class="operator">x</button>
+            <button class="number">1</button>
+            <button class="number">2</button>
+            <button class="number">3</button>
+            <button class="operator">-</button>
+            <button class="number">0</button>
+            <button class="dot">.</button>
+            <button class="operator">=</button>
+            <button class="operator">+</button>
+        </div>
+    </div>
+    <script>
+        const input = document.querySelector(".display");
+const numbers = document.querySelectorAll(".number");
+const operators = document.querySelectorAll(".operator");
+const dot = document.querySelector(".dot");
+const clear = document.querySelector(".clear");
+let displayValue = "0";
+
+let firstNum = "";
+let secondNum = "";
+let operator = "";
+
+numbers.forEach(number => {
+    number.addEventListener("click", e => {
+        if (operator === "") { // Read first number if no operator set yet
+            firstNum += e.target.innerText;
+        } else { // Read second number
+            secondNum += e.target.innerText;
+        }
+    });
+});
+
+operators.forEach(op => {
+    op.addEventListener("click", e => {
+        if (e.target.innerText !== "=") { // If the operator is not equals
+            operator = e.target.innerText;
+
+            console.log(firstNum); // Print the first number
+            console.log(operator); // Print the operator
+
+        } else { // If equals button clicked
+            console.log(secondNum); // Print 2nd number
+
+            switch (operator) { // Calculate and print output
+                case "+":
+                    console.log(parseInt(firstNum) + parseInt(secondNum));
+                    break;
+
+                case "-":
+                    console.log(parseInt(firstNum) - parseInt(secondNum));
+                    break;
+
+                // etc...
+
+                default:
+                    break;
+            }
+        }
+
+    });
+});
+    </script>
+</body>
+</html>
