@@ -104,63 +104,77 @@ const calculator = {
     };
   
     // array for Order of Operation and precedence
-    let order = [[[operation.mltiply],[operation.divide], [operation.modulus],[operation.exponet]], [ [operation.add],[operation.subtract]] ];
-  console.log(operation)
-  for(let i =0; i< order.length; i++){
-    if (operator === '+') {
-      return firstOperand + secondOperand;
-    } else if (operator === '-') {
-      return firstOperand - secondOperand;
-    } else if (operator === '*') {
+    let order = [operation.mltiply,operation.divide, operation.modulus,operation.exponet, operation.add,operation.subtract];
+    
+    // console.log("calculate", operator)
+    if(operator === order[0]){
+      // console.log("mult", order[0], firstOperand * secondOperand)
       return firstOperand * secondOperand;
-    } else if (operator === '/') {
-      return firstOperand / secondOperand;
-    }
-    return secondOperand;
-  }
+    } else if (operator === order[1]) {
+
+    } else if (operator === order[2]) {
+
+    } else if (operator === order[3]) {}
+    
+    // for(let i =0; i< order.length; i++){
+    //   if (operator === '+') {
+    //     return firstOperand + secondOperand;
+    //   } else if (operator === '-') {
+    //     return firstOperand - secondOperand;
+    //   } else if (operator === '*') {
+    //     return firstOperand * secondOperand;
+    //   } else if (operator === '/') {
+    //     return firstOperand / secondOperand;
+    //   }
+    //   return secondOperand;
+    // }
 
   
-  function toCalculate(a, operator, b) {
-    // a = a * 1;
-    // b = b * 1;
-    switch (operator) {
-      case operation.add:
-        return a + b;
-        break;
-      case operation.subtract:
-        return a - b;
-        break;
-      case operation.divide:
-        return a / b;
-        break;
-      case operation.mltiply:
-        return a * b;
-        break;
-      case operation.modulus:
-        return a % b;
-        break;
-      case operation.exponet:
-        return Math.pow(a, b);
-        break;
-      default:
-        null;
+    function toCalculate(a, operator, b) {
+      // a = a * 1;
+      // b = b * 1;
+      switch (operator) {
+        case operation.add:
+          return a + b;
+          break;
+        case operation.subtract:
+          return a - b;
+          break;
+        case operation.divide:
+          return a / b;
+          break;
+        case operation.mltiply:
+          return a * b;
+          break;
+        case operation.modulus:
+          return a % b;
+          break;
+        case operation.exponet:
+          return Math.pow(a, b);
+          break;
+        default:
+          null;
+      }
     }
-    console.log(toCalculate(firstOperand,secondOperand))
+    console.log(toCalculate(firstOperand,operator, secondOperand))
   }
-}
 
   equalsButton.addEventListener('click', ()=> {
   //   //if(!firstNumber || !secondNumber) return;
   //   decimalPoint= false;
-  calculate(this.result);
+  // calculate(this.result);
+  // console.log("equal",this)
   //   //clearAll();
   const display1 = document.querySelector(".display-1")
-    display1.innerText= calculate('3','*','3','+', '2', '+', 4);
- console.log('equal', this.firstOperand, this.operator, this.secondOperand)
+    // display1.innerText= calculate('3','*','3','+', '2', '+', 4);
+    console.log("display", (display1.innerText).split(""))
+    display1.innerText = calculate(3,'*',3);
+    //  console.log('equal', this.firstOperand, this.operator, this.secondOperand)
 
-  const display = document.querySelector(".display-1");
-  display.innerText= this.result;
-     });
+    // const display = document.querySelector(".display-1");
+    
+    // display.innerText= this.result;
+    });
      
    deleteButton.addEventListener('click', (e) => {
     const display = document.querySelector(".display-1");
